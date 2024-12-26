@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-record-service-blue
+  labels:
+    app: patient-record-service
+    environment: blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patient-record-service
+      environment: blue
+  template:
+    metadata:
+      labels:
+        app: patient-record-service
+        environment: blue
+    spec:
+      containers:
+      - name: patient-record-service
+        image: yugani03it/patient-record-service:latest
+        ports:
+        - containerPort: 5000
